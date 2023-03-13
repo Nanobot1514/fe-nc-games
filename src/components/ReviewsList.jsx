@@ -1,45 +1,36 @@
 import { useState, useEffect } from "react";
 import { getReviews } from "../utils/api";
 import "../App.css";
+import ReviewTile from "./ReviewTile";
 
 const ReviewsList = () => {
   const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    getReviews().then((reviews) => {
-      setReviews(reviews);
-    });
+    setIsLoading(true);
+    setIsError(false);
+    getReviews()
+      .then((reviews) => {
+        setIsLoading(false);
+        setReviews(reviews);
+      })
+      .catch(() => {
+        setIsLoading(false);
+        setIsError(true);
+      });
   }, []);
+
+  if (isLoading) return <p>Loading ...</p>;
+  if (isError) return <p>An error has occured</p>;
+
   return (
     <main>
       <div>
         <ul className="reviews-list">
           {reviews.map((review) => {
-            return (
-              <li className="review-tile" key={review.review_id}>
-                <img
-                  className="review-img"
-                  src={review.review_img_url}
-                  alt={review.title}
-                />
-                <h4>
-                  Title:
-                  <p>{review.title}</p>
-                </h4>
-                <h4>
-                  Designer:
-                  <p>{review.designer}</p>
-                </h4>
-                <h4>
-                  Category:
-                  <p>{review.category}</p>
-                </h4>
-                <h4>
-                  Owner:
-                  <p>{review.owner}</p>
-                </h4>
-              </li>
-            );
+            return <ReviewTile key={review.review_id} {...review} />;
           })}
         </ul>
       </div>
