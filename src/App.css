@@ -1,7 +1,13 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 .App {
   text-align: center;
 }
 
+/*
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +41,42 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.Header {
+  padding: 10px;
+}
+
+.reviews-list {
+  display: flex;
+  flex: content;
+  flex-wrap: wrap;
+  list-style: none;
+  flex-direction: row;
+}
+
+.review-tile {
+  padding: 10px;
+  max-width: 30%;
+  max-height: 30%;
+}
+
+/* @media screen and (max-width: 768px) {
+  .review-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+.review-tile {
+  padding: 10px;
+} */
+
+.review-img {
+  width: 100%;
+}
+
+.nav-list {
+  text-align: center;
 }
