@@ -18,3 +18,11 @@ export const getCommentsByReviewId = async (review_id) => {
   const { data } = await gamesApi.get(`/reviews/${review_id}/comments`);
   return data;
 };
+
+export const patchReviewVotes = async (review_id, vote) => {
+  const { data } = await gamesApi.patch(`/reviews/${review_id}`, {
+    inc_votes: vote,
+  });
+
+  return data.patchedReview;
+};
