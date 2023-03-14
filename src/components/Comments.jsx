@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getCommentsByReviewId } from "../utils/api";
-import CommentsList from "./CommentsList";
+import CommentsTile from "./CommentsTile";
 
 const Comments = ({ review_id }) => {
   const [comments, setComments] = useState([]);
@@ -30,7 +30,7 @@ const Comments = ({ review_id }) => {
       <h4>Comments</h4>
       <ul className="comments-list">
         {comments.map((comment) => (
-          <CommentsList key={comment.comment_id} comment={comment} />
+          <CommentsTile key={comment.comment_id} comment={comment} />
         ))}
       </ul>
     </section>
