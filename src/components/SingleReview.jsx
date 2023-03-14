@@ -33,10 +33,10 @@ const SingleReview = () => {
         alt={review.title}
       ></img>
       <section className="review-details">
-        <h1>{review.title}</h1>
-        <h2>{review.designer}</h2>
-        <h2>{review.category}</h2>
-        <h2>{review.owner}</h2>
+        <h2>{review.title}</h2>
+        <p>{review.designer}</p>
+        <p>{review.category}</p>
+        <p>{review.owner}</p>
       </section>
       <section className="review-body">
         <h3>Review</h3>
