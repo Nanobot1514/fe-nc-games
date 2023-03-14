@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ReviewTile = ({
   review_id,
   review_img_url,
@@ -9,10 +11,12 @@ const ReviewTile = ({
   return (
     <li className="review-tile" key={review_id}>
       <img className="review-img" src={review_img_url} alt={title} />
-      <h4>
-        Title:
-        <p>{title}</p>
-      </h4>
+      <Link to={`/reviews/${review_id}`}>
+        <h4>
+          Title:
+          <p>{title}</p>
+        </h4>
+      </Link>
       <h4>
         Designer:
         <p>{designer}</p>

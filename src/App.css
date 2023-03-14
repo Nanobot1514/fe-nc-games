@@ -43,8 +43,9 @@
   }
 } */
 
-.Header {
+.header {
   padding: 10px;
+  text-align: center;
 }
 
 .reviews-list {
@@ -56,11 +57,10 @@
 }
 
 .review-tile {
-  padding: 10px;
+  padding: 15px;
   max-width: 30%;
   max-height: 30%;
 }
-
 /* @media screen and (max-width: 768px) {
   .review-list {
     display: flex;
@@ -79,4 +79,22 @@
 
 .nav-list {
   text-align: center;
+}
+
+.single-review {
+  width: fit-content;
+  padding-top: 10px;
+}
+
+/* .review-details {
+} */
+
+.single-review-img {
+  max-width: 80%;
+  position: relative;
+  left: 10px;
+}
+
+.review-body {
+  padding: 25px;
 }
