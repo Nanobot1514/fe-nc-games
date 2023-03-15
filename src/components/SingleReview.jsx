@@ -30,8 +30,7 @@ const SingleReview = () => {
   if (isError) return <p>An error has occured...</p>;
 
   const handleVotes = (vote) => {
-    setReviewVotes((currVotes) => currVotes + vote);
-    const newVotes = reviewVotes + vote;
+    const newVotes = review.votes + vote;
     setReview((currReview) => ({ ...currReview, votes: newVotes }));
     patchReviewVotes(review_id, vote)
       .then((patchedReview) => {
