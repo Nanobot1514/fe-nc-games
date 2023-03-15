@@ -5,12 +5,13 @@ import "../App.css";
 import Comments from "./Comments";
 import { patchReviewVotes } from "../utils/api";
 
-const SingleReview = () => {
+const SingleReview = ({ user }) => {
   const { review_id } = useParams();
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [reviewVotes, setReviewVotes] = useState(0);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -66,7 +67,13 @@ const SingleReview = () => {
         <h3>Review</h3>
         <p>{review.review_body}</p>
       </section>
-      <Comments review_id={review_id} />
+
+      <Comments
+        review_id={review_id}
+        comments={comments}
+        setComments={setComments}
+        user={user}
+      />
     </section>
   );
 };

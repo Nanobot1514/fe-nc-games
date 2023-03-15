@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { getCommentsByReviewId } from "../utils/api";
 import CommentsTile from "./CommentsTile";
+import AddComment from "./AddComment";
 
-const Comments = ({ review_id }) => {
-  const [comments, setComments] = useState([]);
+const Comments = ({ review_id, comments, setComments, user }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -28,6 +28,12 @@ const Comments = ({ review_id }) => {
   return (
     <section className="comments-section">
       <h4>Comments</h4>
+      <AddComment
+        review_id={review_id}
+        setComments={setComments}
+        comments={comments}
+        user={user}
+      />
       <ul className="comments-list">
         {comments.map((comment) => (
           <CommentsTile key={comment.comment_id} comment={comment} />
