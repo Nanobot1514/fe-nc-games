@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { getReview } from "../utils/api";
 import "../App.css";
 import Comments from "./Comments";
+import { patchReviewVotes } from "../utils/api";
 
 const SingleReview = () => {
   const { review_id } = useParams();
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [reviewVotes, setReviewVotes] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,6 +29,19 @@ const SingleReview = () => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>An error has occured...</p>;
 
+  const handleVotes = (vote) => {
+    const newVotes = review.votes + vote;
+    setReview((currReview) => ({ ...currReview, votes: newVotes }));
+    patchReviewVotes(review_id, vote)
+      .then((patchedReview) => {
+        setReviewVotes(patchedReview.votes);
+      })
+      .catch(() => {
+        setReviewVotes(reviewVotes);
+        setIsError(true);
+      });
+  };
+
   return (
     <section className="single-review">
       <img
@@ -39,6 +54,13 @@ const SingleReview = () => {
         <p>{review.designer}</p>
         <p>{review.category}</p>
         <p>{review.owner}</p>
+        <button onClick={() => handleVotes(1)} className="up-vote">
+          ⬆️
+        </button>
+        <p className="vote-value">Votes: {review.votes}</p>
+        <button onClick={() => handleVotes(-1)} className="down-vote">
+          ⬇️
+        </button>
       </section>
       <section className="review-body">
         <h3>Review</h3>
