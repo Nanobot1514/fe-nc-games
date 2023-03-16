@@ -8,10 +8,18 @@ export const getReviews = async (category) => {
   if (!category) {
     const { data } = await gamesApi.get("/reviews");
     return data.reviews;
-  } else if (category) {
+  }
+  if (category) {
     const { data } = await gamesApi.get(`/reviews?category=${category}`);
     return data.reviews;
   }
+};
+
+export const getSortedReviews = async (sort_by, order) => {
+  const { data } = await gamesApi.get("/reviews", {
+    params: { sort_by, order },
+  });
+  return data.reviews;
 };
 
 export const getReview = async (review_id) => {
