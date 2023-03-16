@@ -3,7 +3,7 @@ import { getReviews } from "../utils/api";
 import "../App.css";
 import ReviewTile from "./ReviewTile";
 
-const ReviewsList = () => {
+const ReviewsList = ({ category }) => {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -11,7 +11,8 @@ const ReviewsList = () => {
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
-    getReviews()
+
+    getReviews(category)
       .then((reviews) => {
         setIsLoading(false);
         setReviews(reviews);
@@ -20,7 +21,7 @@ const ReviewsList = () => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, []);
+  }, [category]);
 
   if (isLoading) return <p>Loading ...</p>;
   if (isError) return <p>An error has occured</p>;
