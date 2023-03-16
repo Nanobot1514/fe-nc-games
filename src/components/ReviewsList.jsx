@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getReviews } from "../utils/api";
 import "../App.css";
 import ReviewTile from "./ReviewTile";
+import ReviewSort from "./ReviewSort";
 
 const ReviewsList = ({ category }) => {
   const [reviews, setReviews] = useState([]);
@@ -29,6 +30,7 @@ const ReviewsList = ({ category }) => {
   return (
     <main>
       <div>
+        <ReviewSort reviews={reviews} setReviews={setReviews} />
         <ul className="reviews-list">
           {reviews.map((review) => {
             return <ReviewTile key={review.review_id} {...review} />;
