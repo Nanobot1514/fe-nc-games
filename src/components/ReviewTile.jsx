@@ -11,7 +11,7 @@ const ReviewTile = ({
   return (
     <li className="review-tile" key={review_id}>
       <img className="review-img" src={review_img_url} alt={title} />
-      <Link to={`/reviews/${review_id}`}>
+      <Link to={`/review/${review_id}`}>
         <h4>
           Title:
           <p>{title}</p>

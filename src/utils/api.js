@@ -4,9 +4,14 @@ const gamesApi = axios.create({
   baseURL: "https://nc-games-w79g.onrender.com/api",
 });
 
-export const getReviews = async () => {
-  const { data } = await gamesApi.get("/reviews");
-  return data.reviews;
+export const getReviews = async (category) => {
+  if (!category) {
+    const { data } = await gamesApi.get("/reviews");
+    return data.reviews;
+  } else if (category) {
+    const { data } = await gamesApi.get(`/reviews?category=${category}`);
+    return data.reviews;
+  }
 };
 
 export const getReview = async (review_id) => {

@@ -3,9 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import HomePage from "./components/HomePage";
-import ReviewsList from "./components/ReviewsList";
 import SingleReview from "./components/SingleReview";
 import { useState } from "react";
+import Reviews from "./components/Reviews";
 
 function App() {
   const [user, setUser] = useState("grumpy19");
@@ -17,9 +17,10 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/reviews" element={<ReviewsList />} />
+        <Route path="/reviews" element={<Reviews />} />
+        <Route path="/reviews/:category" element={<Reviews />} />
         <Route
-          path="/reviews/:review_id"
+          path="/review/:review_id"
           element={<SingleReview user={user} />}
         />
       </Routes>

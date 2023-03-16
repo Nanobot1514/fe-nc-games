@@ -11,9 +11,10 @@ const NavBar = () => {
         </li>
         <li>
           <Link to="/reviews" className="reviews-link">
-            All Reviews
+            Reviews
           </Link>
         </li>
+        <li></li>
       </ul>
     </nav>
   );
