@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
-    <div className="Header">
+    <div className="home-page">
       <h2>Welcome to NC Games!</h2>
 
       <ul>

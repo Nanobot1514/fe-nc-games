@@ -45,26 +45,28 @@ const SingleReview = ({ user }) => {
 
   return (
     <section className="single-review">
-      <img
-        className="single-review-img"
-        src={review.review_img_url}
-        alt={review.title}
-      ></img>
-      <section className="review-details">
-        <h2>{review.title}</h2>
-        <p>{review.designer}</p>
-        <p>{review.category}</p>
-        <p>{review.owner}</p>
-        <button onClick={() => handleVotes(1)} className="up-vote">
-          ⬆️
-        </button>
-        <p className="vote-value">Votes: {review.votes}</p>
-        <button onClick={() => handleVotes(-1)} className="down-vote">
-          ⬇️
-        </button>
-      </section>
+      <div className="review-details-container">
+        <img
+          className="single-review-img"
+          src={review.review_img_url}
+          alt={review.title}
+        ></img>
+        <section className="review-details">
+          <h2>{review.title}</h2>
+          <p>{review.designer}</p>
+          <p>{review.category}</p>
+          <p>{review.owner}</p>
+          <button onClick={() => handleVotes(1)} className="up-vote">
+            ⬆️
+          </button>
+          <p className="vote-value">Votes: {review.votes}</p>
+          <button onClick={() => handleVotes(-1)} className="down-vote">
+            ⬇️
+          </button>
+        </section>
+      </div>
       <section className="review-body">
-        <h3>Review</h3>
+        <h3 className="review-heading">Review</h3>
         <p>{review.review_body}</p>
       </section>
 
