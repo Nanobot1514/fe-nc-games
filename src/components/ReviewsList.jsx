@@ -21,7 +21,7 @@ const ReviewsList = ({ category }) => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, []);
+  }, [category]);
 
   if (isLoading) return <p>Loading ...</p>;
   if (isError) return <p>An error has occured</p>;
