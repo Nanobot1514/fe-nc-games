@@ -4,8 +4,9 @@ import { getReview } from "../utils/api";
 import "../App.css";
 import Comments from "./Comments";
 import { patchReviewVotes } from "../utils/api";
+import NotFoundErr from "./NotFoundErr";
 
-const SingleReview = ({ user }) => {
+const SingleReview = () => {
   const { review_id } = useParams();
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -23,12 +24,11 @@ const SingleReview = ({ user }) => {
       })
       .catch(() => {
         setIsLoading(false);
-        setIsError(true);
+        setIsError(404);
       });
   }, [review_id]);
 
   if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>An error has occured...</p>;
 
   const handleVotes = (vote) => {
     const newVotes = review.votes + vote;
@@ -44,39 +44,44 @@ const SingleReview = ({ user }) => {
   };
 
   return (
-    <section className="single-review">
-      <div className="review-details-container">
-        <img
-          className="single-review-img"
-          src={review.review_img_url}
-          alt={review.title}
-        ></img>
-        <section className="review-details">
-          <h2>{review.title}</h2>
-          <p>{review.designer}</p>
-          <p>{review.category}</p>
-          <p>{review.owner}</p>
-          <button onClick={() => handleVotes(1)} className="up-vote">
-            ⬆️
-          </button>
-          <p className="vote-value">Votes: {review.votes}</p>
-          <button onClick={() => handleVotes(-1)} className="down-vote">
-            ⬇️
-          </button>
-        </section>
-      </div>
-      <section className="review-body">
-        <h3 className="review-heading">Review</h3>
-        <p>{review.review_body}</p>
-      </section>
+    <>
+      {isError === 404 ? (
+        <NotFoundErr />
+      ) : (
+        <section className="single-review">
+          <div className="review-details-container">
+            <img
+              className="single-review-img"
+              src={review.review_img_url}
+              alt={review.title}
+            ></img>
+            <section className="review-details">
+              <h2>{review.title}</h2>
+              <p>{review.designer}</p>
+              <p>{review.category}</p>
+              <p>{review.owner}</p>
+              <button onClick={() => handleVotes(1)} className="up-vote">
+                ⬆️
+              </button>
+              <p className="vote-value">Votes: {review.votes}</p>
+              <button onClick={() => handleVotes(-1)} className="down-vote">
+                ⬇️
+              </button>
+            </section>
+          </div>
+          <section className="review-body">
+            <h3 className="review-heading">Review</h3>
+            <p>{review.review_body}</p>
+          </section>
 
-      <Comments
-        review_id={review_id}
-        comments={comments}
-        setComments={setComments}
-        user={user}
-      />
-    </section>
+          <Comments
+            review_id={review_id}
+            comments={comments}
+            setComments={setComments}
+          />
+        </section>
+      )}
+    </>
   );
 };
 

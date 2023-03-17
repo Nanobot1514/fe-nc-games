@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { postComment } from "../utils/api";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
-const AddComment = ({ review_id, setComments, user }) => {
+const AddComment = ({ review_id, setComments }) => {
   const [newComment, setNewComment] = useState("");
+  const { user } = useContext(UserContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    postComment(review_id, user, newComment).then((data) => {
+    postComment(review_id, user.username, newComment).then((data) => {
       setComments((currentComments) => {
         return [data.postedComment, ...currentComments];
       });

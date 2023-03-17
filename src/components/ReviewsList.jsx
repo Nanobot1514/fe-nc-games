@@ -3,6 +3,7 @@ import { getReviews } from "../utils/api";
 import "../App.css";
 import ReviewTile from "./ReviewTile";
 import ReviewSort from "./ReviewSort";
+import NotFoundErr from "./NotFoundErr";
 
 const ReviewsList = ({ category }) => {
   const [reviews, setReviews] = useState([]);
@@ -20,24 +21,29 @@ const ReviewsList = ({ category }) => {
       })
       .catch(() => {
         setIsLoading(false);
-        setIsError(true);
+        setIsError(404);
       });
   }, [category]);
 
   if (isLoading) return <p>Loading ...</p>;
-  if (isError) return <p>An error has occured</p>;
 
   return (
-    <main>
-      <div>
-        <ReviewSort reviews={reviews} setReviews={setReviews} />
-        <ul className="reviews-list">
-          {reviews.map((review) => {
-            return <ReviewTile key={review.review_id} {...review} />;
-          })}
-        </ul>
-      </div>
-    </main>
+    <>
+      {isError === 404 ? (
+        <NotFoundErr />
+      ) : (
+        <main>
+          <div>
+            <ReviewSort reviews={reviews} setReviews={setReviews} />
+            <ul className="reviews-list">
+              {reviews.map((review) => {
+                return <ReviewTile key={review.review_id} {...review} />;
+              })}
+            </ul>
+          </div>
+        </main>
+      )}
+    </>
   );
 };
 

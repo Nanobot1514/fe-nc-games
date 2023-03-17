@@ -52,3 +52,14 @@ export const deleteCommentById = async (comment_id) => {
   const { data } = await gamesApi.delete(`/comments/${comment_id}`);
   return data;
 };
+
+export const getUsers = async () => {
+  const { data } = await gamesApi.get(`/users`);
+  return data.users;
+};
+
+export const getUsersByUsername = async (user_name) => {
+  const { data } = await gamesApi.get(`/users/${user_name}`);
+  console.log(data);
+  return data.user;
+};

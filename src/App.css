@@ -45,7 +45,12 @@
 
 .header {
   padding: 10px;
+}
+
+.not-found-text {
   text-align: center;
+  padding: 30px;
+  font-size: 40px;
 }
 
 /* .link-container {
@@ -63,11 +68,36 @@
   padding: 8px;
 }
 
+.sign-in-link {
+  display: flex;
+  padding: 8px;
+  text-decoration: none;
+}
+.signed-in-alert {
+  display: flex;
+  margin-left: 8px;
+  font-size: 11px;
+}
+
+.sign-into-other-account-link {
+  margin-left: 8px;
+  display: flex;
+}
+.sign-in {
+  padding: 8px;
+}
 /* .nav-link:hover {
 
 } */
 
 .home-page {
+  padding: 0 8px;
+}
+
+.sorting-dropdowns {
+  padding: 0 8px;
+}
+.review-order {
   padding: 0 8px;
 }
 .reviews-list {

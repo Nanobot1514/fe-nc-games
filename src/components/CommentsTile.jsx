@@ -1,7 +1,11 @@
 import "../App.css";
 import { deleteCommentById } from "../utils/api";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
-const CommentsTile = ({ comment, setComments, comments, user }) => {
+const CommentsTile = ({ comment, setComments, comments }) => {
+  const { user } = useContext(UserContext);
+
   const handleDeleteComment = (event) => {
     deleteCommentById(event.target.value).then(() => {
       const updatedComments = comments.filter(
@@ -19,7 +23,7 @@ const CommentsTile = ({ comment, setComments, comments, user }) => {
         posted on {new Date(comment.created_at).toLocaleDateString()} at{" "}
         {new Date(comment.created_at).toLocaleTimeString()}
       </p>
-      {user === comment.author && (
+      {user.username === comment.author && (
         <button
           onClick={handleDeleteComment}
           className="delete-comment-button"
