@@ -32,7 +32,7 @@ const ReviewSort = ({ setReviews }) => {
   return (
     <section className="sorting-dropdowns">
       <label className="review-sort" htmlFor="sort_by-option">
-        Sort By:
+        Sort By:{" "}
         <select
           onChange={handleSortBy}
           value={searchParams.get("sort_by") || "Title"}
@@ -48,7 +48,7 @@ const ReviewSort = ({ setReviews }) => {
         </select>
       </label>
       <label className="review-order" htmlFor="order-option">
-        Order By:
+        Order By:{" "}
         <select
           onChange={handleOrder}
           value={searchParams.get("order") || "asc"}

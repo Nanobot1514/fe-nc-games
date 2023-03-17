@@ -4,13 +4,12 @@ import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import HomePage from "./components/HomePage";
 import SingleReview from "./components/SingleReview";
-import { useState } from "react";
+import NotFoundErr from "./components/NotFoundErr";
+
 import Reviews from "./components/Reviews";
+import SignIn from "./components/SignIn";
 
 function App() {
-  const [user, setUser] = useState("grumpy19");
-  // temp state to make comments work, will create user context later with sign in page
-
   return (
     <div className="App">
       <Header />
@@ -19,10 +18,13 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/reviews/:category" element={<Reviews />} />
+        <Route path="/review/:review_id" element={<SingleReview />} />
+        <Route path="/sign-in" element={<SignIn />} />
         <Route
           path="/review/:review_id"
           element={<SingleReview user={user} setUser={setUser} />}
         />
+        <Route path="*" element={<NotFoundErr />} />
       </Routes>
     </div>
   );

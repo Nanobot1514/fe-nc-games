@@ -3,7 +3,7 @@ import { getCommentsByReviewId } from "../utils/api";
 import CommentsTile from "./CommentsTile";
 import AddComment from "./AddComment";
 
-const Comments = ({ review_id, comments, setComments, user }) => {
+const Comments = ({ review_id, comments, setComments }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -32,7 +32,6 @@ const Comments = ({ review_id, comments, setComments, user }) => {
         review_id={review_id}
         setComments={setComments}
         comments={comments}
-        user={user}
       />
       <ul className="comments-list">
         {comments.map((comment) => (
@@ -41,7 +40,6 @@ const Comments = ({ review_id, comments, setComments, user }) => {
             comment={comment}
             comments={comments}
             setComments={setComments}
-            user={user}
           />
         ))}
       </ul>
