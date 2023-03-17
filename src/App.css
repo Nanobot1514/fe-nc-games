@@ -3,9 +3,9 @@
   padding: 0px;
 }
 
-.App {
-  text-align: center;
-}
+/* .App {
+  
+} */
 
 /*
 .App-logo {
@@ -48,6 +48,28 @@
   text-align: center;
 }
 
+/* .link-container {
+} */
+
+.link-container a {
+  margin-left: 8px;
+  text-decoration: none;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 8px;
+}
+
+/* .nav-link:hover {
+
+} */
+
+.home-page {
+  padding: 0 8px;
+}
 .reviews-list {
   display: flex;
   flex: content;
@@ -77,32 +99,41 @@
   width: 100%;
 }
 
-.nav-list {
-  text-align: center;
-}
-
 .single-review {
   width: fit-content;
-  padding-top: 10px;
+  padding: 8px;
 }
 
-/* .review-details {
-} */
+.review-details {
+  padding: 8px;
+}
 
 .single-review-img {
-  max-width: 80%;
-  position: relative;
-  left: 10px;
+  max-width: 40%;
+  border-radius: 8px;
 }
 
 .review-body {
-  padding: 25px;
+  padding: 20px 0;
+}
+
+/* .comment-form {
+} */
+
+.comment-form label,
+button {
+  display: block;
 }
 
 .comment-tile {
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .home-category-header {
-  padding: 10px;
+  padding: 5px 0;
+}
+
+.review-details-container {
+  display: flex;
+  align-items: center;
 }

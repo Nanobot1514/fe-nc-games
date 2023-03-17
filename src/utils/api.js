@@ -41,10 +41,14 @@ export const patchReviewVotes = async (review_id, vote) => {
 };
 
 export const postComment = async (review_id, author, newComment) => {
-  // console.log(author);
   const { data } = await gamesApi.post(`/reviews/${review_id}/comments`, {
     username: author,
     body: newComment,
   });
+  return data;
+};
+
+export const deleteCommentById = async (comment_id) => {
+  const { data } = await gamesApi.delete(`/comments/${comment_id}`);
   return data;
 };

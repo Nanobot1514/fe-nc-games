@@ -19,7 +19,7 @@ const Comments = ({ review_id, comments, setComments, user }) => {
         setIsLoading(false);
         setIsError(true);
       });
-  }, [review_id]);
+  }, [review_id, setComments]);
 
   if (isLoading) return <p>Loading...</p>;
   if (isError)
@@ -36,7 +36,13 @@ const Comments = ({ review_id, comments, setComments, user }) => {
       />
       <ul className="comments-list">
         {comments.map((comment) => (
-          <CommentsTile key={comment.comment_id} comment={comment} />
+          <CommentsTile
+            key={comment.comment_id}
+            comment={comment}
+            comments={comments}
+            setComments={setComments}
+            user={user}
+          />
         ))}
       </ul>
     </section>
