@@ -20,6 +20,10 @@ function App() {
         <Route path="/reviews/:category" element={<Reviews />} />
         <Route path="/review/:review_id" element={<SingleReview />} />
         <Route path="/sign-in" element={<SignIn />} />
+        <Route
+          path="/review/:review_id"
+          element={<SingleReview user={user} setUser={setUser} />}
+        />
         <Route path="*" element={<NotFoundErr />} />
       </Routes>
     </div>
