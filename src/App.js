@@ -21,7 +21,7 @@ function App() {
         <Route path="/reviews/:category" element={<Reviews />} />
         <Route
           path="/review/:review_id"
-          element={<SingleReview user={user} />}
+          element={<SingleReview user={user} setUser={setUser} />}
         />
       </Routes>
     </div>
