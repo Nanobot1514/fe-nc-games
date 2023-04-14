@@ -93,6 +93,9 @@
 .home-page {
   padding: 0 8px;
 }
+.categories-list li {
+  font-weight: bold;
+}
 
 .sorting-dropdowns {
   padding: 0 8px;

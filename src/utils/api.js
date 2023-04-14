@@ -15,9 +15,15 @@ export const getReviews = async (category) => {
   }
 };
 
-export const getSortedReviews = async (sort_by, order) => {
+export const getSortedReviews = async (sort_by, order, category) => {
+  if (category === "all") {
+    const { data } = await gamesApi.get("/reviews", {
+      params: { sort_by, order },
+    });
+    return data.reviews;
+  }
   const { data } = await gamesApi.get("/reviews", {
-    params: { sort_by, order },
+    params: { sort_by, order, category },
   });
   return data.reviews;
 };
@@ -60,6 +66,5 @@ export const getUsers = async () => {
 
 export const getUsersByUsername = async (user_name) => {
   const { data } = await gamesApi.get(`/users/${user_name}`);
-  console.log(data);
   return data.user;
 };
