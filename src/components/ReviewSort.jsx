@@ -16,11 +16,17 @@ const ReviewSort = ({ setReviews }) => {
     setSearchParams(searchParams);
   };
 
+  const handleCategory = (event) => {
+    searchParams.set("category", event.target.value);
+    setSearchParams(searchParams);
+  };
+
   useEffect(() => {
     setIsLoading(true);
     getSortedReviews(
       searchParams.get("sort_by") || "title",
-      searchParams.get("order") || "asc"
+      searchParams.get("order") || "asc",
+      searchParams.get("category")
     ).then((reviews) => {
       setIsLoading(false);
       setReviews(reviews);
@@ -42,7 +48,7 @@ const ReviewSort = ({ setReviews }) => {
         >
           <option value="title">Title</option>
           <option value="designer">Designer</option>
-          <option value="category">Category</option>
+
           <option value="votes">Votes</option>
           <option value="comment_count">Comment Count</option>
         </select>
@@ -58,6 +64,25 @@ const ReviewSort = ({ setReviews }) => {
         >
           <option value="desc">Descending</option>
           <option value="asc">Ascending</option>
+        </select>
+      </label>
+      <label className="category-sort" htmlFor="category-option">
+        Category:{" "}
+        <select
+          onChange={handleCategory}
+          value={searchParams.get("category") || "all"}
+          name="category"
+          id="category-option"
+          className="category-dropdown"
+        >
+          <option value="all">All</option>
+          <option value="dexterity">Dexterity</option>
+          <option value="strategy">Strategy</option>
+          <option value="hidden-roles">Hidden Roles</option>
+          <option value="push-your-luck">Push Your Luck</option>
+          <option value="roll-and-write">Roll and Write</option>
+          <option value="deck-building">Deck Building</option>
+          <option value="engine-building">Engine Building</option>
         </select>
       </label>
     </section>

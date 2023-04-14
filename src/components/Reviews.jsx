@@ -4,7 +4,6 @@ import ReviewsList from "./ReviewsList";
 
 const Reviews = () => {
   const { category } = useParams();
-  //   console.log(category);
   return (
     <section>
       <ReviewsList category={category} />
